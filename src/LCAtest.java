@@ -11,44 +11,46 @@ public class LCAtest {
 
     @Test
     public void testGet(){
-        //create tree
-        assertEquals("test null", null, LCA.get(5));
-        //add nodes
-        assertEquals("test get node with key 5", (Integer) 5, LCA.get(5));
+        LCA<Integer, Integer> lca = new LCA<Integer, Integer>();
+        lca.put(2, 2);
+        lca.put(6, 6);
+        lca.put(4, 4);
+        lca.put(5,5);
+        assertEquals("test get node with key 5", (Integer) 5, lca.get(5));
     }
 
-
+    /**
     @Test
     public void testHeight(){
-        //create new tree
+        LCA<Integer, Integer> bst = new LCA<Integer, Integer>();
         //add nodes
-        int height = LCA.height(5);     //find h of node with key 5
+        int height = lca.height(5);     //find h of node with key 5
         assertEquals("Test the height of a node",3, height);
 
     }
 
     @Test
     public void testGetParent(){
-        //create new tree
+        LCA<Integer, Integer> bst = new LCA<Integer, Integer>();
         //add nodes
-        int parent = LCA.getParent(3);
+        int parent = lca.getParent(3);
         assertEquals("Test for the  parent of a node", 2, parent);
     }
 
     @Test
     public void testParents(){
-        //create new tree
+        LCA<Integer, Integer> bst = new LCA<Integer, Integer>();
         //add nodes
-        int[] parents = LCA.parents(4);
+        int[] parents = lca.parents(4);
         int[] expected = {1,3};
         Assert.assertArrayEquals(expected, parents);
     }
 
     @Test
     public void testFindLCA(){
-        //create new tree
+        LCA<Integer, Integer> bst = new LCA<Integer, Integer>();
         //add nodes
-        int lca = LCA.findLCA(3,7);
+        int lca = lca.findLCA(3,7);
         assertEquals("Test for key of LCA of two nodes", 2, lca);
-    }
+    }*/
 }
