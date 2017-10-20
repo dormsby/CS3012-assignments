@@ -25,7 +25,10 @@ public class LCA<Key extends Comparable<Key>, Value> {
         int cmp = key.compareTo(x.key);
         if (cmp < 0) x.left = put(x.left, x, key, val);
         else if (cmp > 0) x.right = put(x.right, x, key, val);
-        else x.val = val;
+        else {
+            x.val = val;
+            x.parent = prev;
+        }
         return x;
     }
     //search for a given key
@@ -39,5 +42,15 @@ public class LCA<Key extends Comparable<Key>, Value> {
         if (cmp < 0) return get(x.left, key);
         else if (cmp > 0) return get(x.right, key);
         else return x.val;
+    }
+
+    public Value getParent(Key key) {return getParent(root, key);}
+
+    private Value getParent(Node x, Key key){
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) return getParent(x.left, key);
+        else if (cmp > 0) return getParent(x.right, key);
+        else return x.parent.val;
     }
 }
