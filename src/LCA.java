@@ -44,13 +44,26 @@ public class LCA<Key extends Comparable<Key>, Value> {
         else return x.val;
     }
 
-    public Value getParent(Key key) {return getParent(root, key);}
+    public Key getParentKey(Key key) {return getParentKey(root, key);}
 
-    private Value getParent(Node x, Key key){
+    private Key getParentKey(Node x, Key key){
         if (x == null) return null;
         int cmp = key.compareTo(x.key);
-        if (cmp < 0) return getParent(x.left, key);
-        else if (cmp > 0) return getParent(x.right, key);
-        else return x.parent.val;
+        if (cmp < 0) return getParentKey(x.left, key);
+        else if (cmp > 0) return getParentKey(x.right, key);
+        else if (x.key == root.key)
+            return null;
+        else return x.parent.key;
     }
+
+    public int numberOfAncestors (Key key){
+        int ancestors =0;
+        Key parent = getParentKey(key);
+        while(parent != null){
+            ancestors++;
+            parent = getParentKey(parent);
+        }
+        return ancestors;
+    }
+
 }

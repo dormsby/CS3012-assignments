@@ -20,7 +20,7 @@ public class LCAtest {
     }
 
     @Test
-    public void testGetParent(){
+    public void testGetParentKey(){
         LCA<Integer, Integer> lca = new LCA<Integer, Integer>();
         lca.put(7, 7);   //        _7_
         lca.put(8, 8);   //      /     \
@@ -31,19 +31,25 @@ public class LCAtest {
         lca.put(4, 4);   //   2   4
         lca.put(5, 5);   //        \
                          //         5
-        assertEquals("test get node with key 5", (Integer) 1, lca.getParent(2));
+        assertEquals("test get node with key 5", (Integer) 1, lca.getParentKey(2));
     }
 
-    /**
     @Test
-    public void testHeight(){
+    public void testNumberOfAncestors(){
         LCA<Integer, Integer> lca = new LCA<Integer, Integer>();
-        //add nodes
-        int height = lca.height(5);     //find h of node with key 5
-        assertEquals("Test the height of a node",3, height);
+        lca.put(7, 7);   //        _7_
+        lca.put(8, 8);   //      /     \
+        lca.put(3, 3);   //    _3_      8
+        lca.put(1, 1);   //  /     \
+        lca.put(2, 2);   // 1       6
+        lca.put(6, 6);   //  \     /
+        lca.put(4, 4);   //   2   4
+        lca.put(5, 5);   //        \
+                        //         5
+        assertEquals("Test the height of a node",4, lca.numberOfAncestors(5) );
 
     }
-
+    /**
     @Test
     public void testParents(){
         LCA<Integer, Integer> lca = new LCA<Integer, Integer>();
