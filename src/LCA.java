@@ -66,4 +66,16 @@ public class LCA<Key extends Comparable<Key>, Value> {
         return ancestors;
     }
 
+    public int [] ancestorsKeys(Key key){
+        int size = numberOfAncestors(key);
+        int [] ancestors = new int [size];
+        Key parent;
+        for(int i =0; i < size; i++) {
+            parent = getParentKey(key);
+            ancestors[i] = (Integer) parent;
+            key = parent;
+        }
+        return ancestors;
+    }
+
 }
