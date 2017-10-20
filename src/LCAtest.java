@@ -65,13 +65,20 @@ public class LCAtest {
         int[] expected = {4,6,3,7};
         Assert.assertArrayEquals(expected, lca.ancestorsKeys(5));
     }
-    /**
+
 
     @Test
     public void testFindLCA(){
         LCA<Integer, Integer> lca = new LCA<Integer, Integer>();
-        //add nodes
-        int lca = lca.findLCA(3,7);
-        assertEquals("Test for key of LCA of two nodes", 2, lca);
-    }*/
+        lca.put(7, 7);   //        _7_
+        lca.put(8, 8);   //      /     \
+        lca.put(3, 3);   //    _3_      8
+        lca.put(1, 1);   //  /     \
+        lca.put(2, 2);   // 1       6
+        lca.put(6, 6);   //  \     /
+        lca.put(4, 4);   //   2   4
+        lca.put(5, 5);   //        \
+                         //         5
+        assertEquals("Test for key of LCA of two nodes", 3, lca.getLCA(2,4));
+    }
 }

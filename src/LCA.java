@@ -1,4 +1,5 @@
 
+
 public class LCA<Key extends Comparable<Key>, Value> {
     private Node root;
 
@@ -76,6 +77,24 @@ public class LCA<Key extends Comparable<Key>, Value> {
             key = parent;
         }
         return ancestors;
+    }
+
+
+    public int getLCA(Key key1, Key key2){
+        int[] ancestors1, ancestors2;
+        ancestors1 = ancestorsKeys(key1);
+        ancestors2 = ancestorsKeys(key2);
+
+        int lcaKey = -1;
+        for(int i =0; i< ancestors1.length;i++){
+            for(int j =0; j < ancestors2.length; j++){
+                if(ancestors1[i]==ancestors2[j]) {
+                    lcaKey = ancestors1[i];
+                    return lcaKey;
+                }
+            }
+        }
+        return lcaKey;
     }
 
 }
