@@ -1,13 +1,15 @@
 from github import Github 
 import getpass
 from nvd3 import discreteBarChart
-from IPython.core.display import display, HTML
-#nvd3.ipynb.initialize_javascript(use_remote=True)
 
 #https://github.com/PyGithub/PyGithub
 
+
+#outputs a html file that contains a bar chart of commits in a repo that the user owns.
+#uses python-nvd3 for graphs
+
 # Open File to write the D3 Graph
-output_file = open('test-nvd3.html', 'w')
+output_file = open('master-commits-bar-chart.html', 'w')
 xdata = []
 ydata = []
 
