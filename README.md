@@ -1,2 +1,2 @@
-# Lowest-Common-Ancestor
-CS3012 Development task 1
+# CS3012-assignments
+CS3012 Development tasks
